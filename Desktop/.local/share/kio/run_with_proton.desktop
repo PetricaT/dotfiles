@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/x-wine-extension-msp;application/x-msi-shortcut;application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;application/x-wine-extension-exe;
+Actions=RunWithProton;
+
+[Desktop Action RunWithProton]
+Name=Run with Proton
+Icon=wine
+Exec=~/.local/bin/proton-picker-run %f
