@@ -1,6 +1,4 @@
 #!/bin/bash
-# Save this as: ~/.local/bin/proton-launcher.sh
-# Make executable: chmod +x ~/.local/bin/proton-launcher.sh
 
 EXE_PATH="$1"
 

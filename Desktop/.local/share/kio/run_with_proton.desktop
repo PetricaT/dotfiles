@@ -7,4 +7,4 @@ Actions=RunWithProton;
 [Desktop Action RunWithProton]
 Name=Run with Proton
 Icon=wine
-Exec=~/.local/bin/proton-picker-run %f
+Exec=~/.local/bin/proton-picker-run.sh %f
