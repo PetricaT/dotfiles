@@ -1,1 +1,0 @@
-autoexec.cfg - CS2 compatible cfg file
