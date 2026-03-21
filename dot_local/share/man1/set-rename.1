@@ -1,0 +1,32 @@
+.\" Process this file with
+.\" groff -man -Tascii set-rename.1
+.\"
+.\" t
+.Dd 2025/11/13  \" DATE
+.Dt set-rename  \" Program name and manual section number
+.Sh NAME        \" Section Header - required - don't modify
+.Nm set-rename
+.Nd The image set renaming utility.
+.Sh SYNOPSIS             \" Section Header
+.Nm
+name                     \" Arguments
+.Sh DESCRIPTION          \" Section Header
+The utility
+.Nm
+takes an input formatted as
+.Ar X_X_X.[jpg | png]
+and renames it incrementally.
+
+
+It should be noted that the script is to be ran inside the directory which the 
+source files reside. The operation is non-reversible and destructive.
+
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
+.It Pa /usr/local/bin/
+.Nm
+\/.sh
+.It Pa /usr/local/man/man1/
+.Nm
+\/.1
+.El                      \" Ends the list
