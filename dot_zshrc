@@ -77,13 +77,20 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export PATH="$PATH:/usr/bin/mangohud:/usr/lib/mangohud:/usr/lib32/mangohud"
 
 
-  source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  source ~/.oh-my-zsh/plugins/zoxide/
+  for file in \
+    ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  do
+    [ -f "$file" ] && source "$file" && break
+  done
+
+  if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+  fi
 
   plugins=(
     zoxide
     zsh-autosuggestions
-    zsh-syntax-highlighting
     colored-man-pages
   )
 
