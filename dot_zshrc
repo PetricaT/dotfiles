@@ -125,15 +125,16 @@ alias v="nvim"
 
 gitpush ()
 {
-    DEFAULT_MESSAGE="Auto commit";
-    if [ -z "$1" ]; then
-        MESSAGE="$DEFAULT_MESSAGE";
-    else
-        MESSAGE="$1";
-    fi;
-    git add .;
-    git commit -m "$MESSAGE";
-    git push
+	set GCM_CREDENTIAL_STORE=secretservice
+	DEFAULT_MESSAGE="Auto commit";
+	if [ -z "$1" ]; then
+		MESSAGE="$DEFAULT_MESSAGE";
+	else
+		MESSAGE="$1";
+	fi;
+	git add .;
+	git commit -m "$MESSAGE";
+	git push
 }
 
 
