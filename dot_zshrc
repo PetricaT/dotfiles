@@ -66,6 +66,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export LC_IDENTIFICATION=ro_RO.UTF-8
 
   export EDITOR=nvim
+  export GCM_CREDENTIAL_STORE=secretservice
 
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
