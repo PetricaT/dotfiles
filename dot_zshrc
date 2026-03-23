@@ -65,6 +65,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export LC_MEASUREMENT=ro_RO.UTF-8
   export LC_IDENTIFICATION=ro_RO.UTF-8
 
+  export EDITOR=nvim
+
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
   export LESS_TERMCAP_me=$'\e[0m'
