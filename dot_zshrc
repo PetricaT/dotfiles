@@ -68,6 +68,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export EDITOR=nvim
   export GCM_CREDENTIAL_STORE=secretservice
 
+  export XDG_CONFIG_HOME=$HOME/.config
+  export XDG_CACHE_HOME=$HOME/.cache
+  export XDG_DATA_HOME=$HOME/.local/share
+  export XDG_STATE_HOME=$HOME/.local/state
+
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
   export LESS_TERMCAP_me=$'\e[0m'
