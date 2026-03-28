@@ -65,8 +65,12 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export LC_MEASUREMENT=ro_RO.UTF-8
   export LC_IDENTIFICATION=ro_RO.UTF-8
 
+  # System env
   export EDITOR=nvim
   export GCM_CREDENTIAL_STORE=secretservice
+
+  # Proton env
+  export PROTON_USE_NTSYNC=1
 
   export XDG_CONFIG_HOME=$HOME/.config
   export XDG_CACHE_HOME=$HOME/.cache
