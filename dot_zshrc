@@ -70,12 +70,14 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export GCM_CREDENTIAL_STORE=secretservice
 
   # Proton env
-  export PROTON_USE_NTSYNC=1
+  # export PROTON_USE_NTSYNC=1
 
   export XDG_CONFIG_HOME=$HOME/.config
   export XDG_CACHE_HOME=$HOME/.cache
   export XDG_DATA_HOME=$HOME/.local/share
   export XDG_STATE_HOME=$HOME/.local/state
+  export XDG_MUSIC_DIR=$HOME/Music
+
 
   export LESS_TERMCAP_mb=$'\e[1;32m'
   export LESS_TERMCAP_md=$'\e[1;32m'
@@ -87,7 +89,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
  # Add MangoHUD to path
   export PATH="$PATH:/usr/bin/mangohud:/usr/lib/mangohud:/usr/lib32/mangohud"
-
+  export PATH="$PATH:$HOME/.cache/.bun/bin"
 
   for file in \
     ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
