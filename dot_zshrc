@@ -167,8 +167,8 @@ safe_alias l="eza -lh --icons=auto --group-directories-first"
 safe_alias tree="tree --gitignore"
 safe_alias v="nvim"
 
-safe_alias mv="/usr/local/bin/advmv -g"
-safe_alias cp="/usr/local/bin/advcp -g"
+safe_alias mv="/usr/local/bin/mvg -g"
+safe_alias cp="/usr/local/bin/cpg -g"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
