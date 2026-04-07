@@ -3,43 +3,43 @@
 
 # Check if command exists then aliases
 safe_alias() {
-	local arg="$1"
+    local arg="$1"
 
-	# Parse alias name and value
-	local alias_name="${arg%%=*}"
-	alias_name="${alias_name// /}"
+    # Parse alias name and value
+    local alias_name="${arg%%=*}"
+    alias_name="${alias_name// /}"
 
-	local alias_value="${arg#*=}"
-	alias_value="${alias_value#"${alias_value%%[! ]*}"}"
-	alias_value="${alias_value%"${alias_value##*[! ]}"}"
-	alias_value="${alias_value#\"}"
-	alias_value="${alias_value%\"}"
-	alias_value="${alias_value#\'}"
-	alias_value="${alias_value%\'}"
+    local alias_value="${arg#*=}"
+    alias_value="${alias_value#"${alias_value%%[! ]*}"}"
+    alias_value="${alias_value%"${alias_value##*[! ]}"}"
+    alias_value="${alias_value#\"}"
+    alias_value="${alias_value%\"}"
+    alias_value="${alias_value#\'}"
+    alias_value="${alias_value%\'}"
 
-	# Extract the executable (first token)
-	local executable="${alias_value%% *}"
+    # Extract the executable (first token)
+    local executable="${alias_value%% *}"
 
-	# Check existence: absolute path uses -f, bare name uses command -v
-	local found=0
-	if [[ "$executable" == /* ]]; then
-		[[ -f "$executable" ]] && found=1
-	else
-		command -v "$executable" &>/dev/null && found=1
-	fi
+    # Check existence: absolute path uses -f, bare name uses command -v
+    local found=0
+    if [[ "$executable" == /* ]]; then
+        [[ -f "$executable" ]] && found=1
+    else
+        command -v "$executable" &>/dev/null && found=1
+    fi
 
-	if ((found)); then
-		alias "${alias_name}=${alias_value}"
-	else
-		if [[ ! -f "$HOME/.config/SUPRESS_WARNINGS" ]]; then
-			echo "safe_alias: warning: '${executable}' not found — alias '${alias_name}' was not set." >&2
-		fi
-	fi
+    if ((found)); then
+        alias "${alias_name}=${alias_value}"
+    else
+        if [[ ! -f "$HOME/.config/SUPRESS_WARNINGS" ]]; then
+            echo "safe_alias: warning: '${executable}' not found — alias '${alias_name}' was not set." >&2
+        fi
+    fi
 }
 
 # Check if file exists and source
 safe_source() {
-	[[ -e "$1" ]] && source "$1"
+    [[ -e "$1" ]] && source "$1"
 }
 
 # ────────────────────── oh-my-zsh Config ──────────────────────────────────────
@@ -64,93 +64,93 @@ export GITHUB_USERNAME=PetricaT
 #                                   MacOS 🍎
 # ──────────────────────────────────────────────────────────────────────────────
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# Exports
-	export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-	export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+    # Exports
+    export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-	export HOMEBREW_SHARE="$HOMEBREW_PREFIX/share"
+    export HOMEBREW_SHARE="$HOMEBREW_PREFIX/share"
 
-	# pnpm
-	export PNPM_HOME="~/Library/pnpm"
-	case ":$PATH:" in
-	*":$PNPM_HOME:"*) ;;
-	*) export PATH="$PNPM_HOME:$PATH" ;;
-	esac
-	# pnpm end
-	
+    # pnpm
+    export PNPM_HOME="~/Library/pnpm"
+    case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+    # pnpm end
+    
   # Aliases
-	safe_alias pip="python3 -m pip"
-	safe_alias python="python3"
+    safe_alias pip="python3 -m pip"
+    safe_alias python="python3"
 
   # Sources
   safe_source ${HOME}/.iterm2_shell_integration.zsh 
   safe_source "$HOMEBREW_SHARE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
   plugins=(
-		z
-		brew
-		iterm2
-		zsh-autosuggestions
-	)
+        z
+        brew
+        iterm2
+        zsh-autosuggestions
+    )
 
 # ──────────────────────────────────────────────────────────────────────────────
 #                                   Linux 🐧
 # ──────────────────────────────────────────────────────────────────────────────
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	# Exports
-  ## Languages
-	export LANG=en_US.UTF-8
-	export LC_CTYPE=en_US.UTF-8
-	export LC_NUMERIC=en_US.UTF-8
-	export LC_TIME=ro_RO.UTF-8
-	export LC_COLLATE=en_US.UTF-8
-	export LC_MONETARY=ro_RO.UTF-8
-	export LC_MESSAGES=en_US.UTF-8
-	export LC_PAPER=ro_RO.UTF-8
-	export LC_NAME=ro_RO.UTF-8
-	export LC_ADDRESS=ro_RO.UTF-8
-	export LC_TELEPHONE=ro_RO.UTF-8
-	export LC_MEASUREMENT=ro_RO.UTF-8
-	export LC_IDENTIFICATION=ro_RO.UTF-8
+    # Exports
+    ## Languages
+    export LANG=en_US.UTF-8
+    export LC_CTYPE=en_US.UTF-8
+    export LC_NUMERIC=en_US.UTF-8
+    export LC_TIME=ro_RO.UTF-8
+    export LC_COLLATE=en_US.UTF-8
+    export LC_MONETARY=ro_RO.UTF-8
+    export LC_MESSAGES=en_US.UTF-8
+    export LC_PAPER=ro_RO.UTF-8
+    export LC_NAME=ro_RO.UTF-8
+    export LC_ADDRESS=ro_RO.UTF-8
+    export LC_TELEPHONE=ro_RO.UTF-8
+    export LC_MEASUREMENT=ro_RO.UTF-8
+    export LC_IDENTIFICATION=ro_RO.UTF-8
 
-	## System env
-	export EDITOR=nvim
-	export GCM_CREDENTIAL_STORE=secretservice
+    ## System env
+    export EDITOR=nvim
+    export GCM_CREDENTIAL_STORE=secretservice
 
-	## Add MangoHUD to path
-	export PATH="$PATH:/usr/bin/mangohud:/usr/lib/mangohud:/usr/lib32/mangohud"
-	export PATH="$PATH:$HOME/.cache/.bun/bin"
+    ## Add MangoHUD to path
+    export PATH="$PATH:/usr/bin/mangohud:/usr/lib/mangohud:/usr/lib32/mangohud"
+    export PATH="$PATH:$HOME/.cache/.bun/bin"
 
-	for file in \
-		~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-		/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
-		[ -f "$file" ] && source "$file" && break
-	done
+    for file in \
+        ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+        /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+        [ -f "$file" ] && source "$file" && break
+    done
 
-	if command -v zoxide >/dev/null 2>&1; then
-		eval "$(zoxide init zsh)"
-	fi
+    if command -v zoxide >/dev/null 2>&1; then
+        eval "$(zoxide init zsh)"
+    fi
 
 
-	# Aliases
-	alias open="xdg-open"
-	# alias wpeek="watch -n.1 /usr/local/bin/wpeek.sh"
+    # Aliases
+    alias open="xdg-open"
+    # alias wpeek="watch -n.1 /usr/local/bin/wpeek.sh"
 
-	## [Completion]
-	## Completion scripts setup. Remove the following line to uninstall
-	[[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
-	## [/Completion]
+    ## [Completion]
+    ## Completion scripts setup. Remove the following line to uninstall
+    [[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
+    ## [/Completion]
 
-	# Created by `pipx` on 2025-06-03 16:48:28
-	export PATH="$PATH:$HOME/.local/bin"
-  safe_source "$HOME/.jabba/jabba.sh"
-	# [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+    # Created by `pipx` on 2025-06-03 16:48:28
+    export PATH="$PATH:$HOME/.local/bin"
+    safe_source "$HOME/.jabba/jabba.sh"
+    # [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
-	plugins=(
-		zoxide
-		zsh-autosuggestions
-		colored-man-pages
-	)
+    plugins=(
+        zoxide
+        zsh-autosuggestions
+        colored-man-pages
+    )
 
 fi
 # ──────────────────────────────────────────────────────────────────────────────
@@ -197,15 +197,15 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # ───────────────────────── Custom Functions ───────────────────────────────────
 
 gitpush() {
-	DEFAULT_MESSAGE="Auto commit"
-	if [ -z "$1" ]; then
-		MESSAGE="$DEFAULT_MESSAGE"
-	else
-		MESSAGE="$1"
-	fi
-	git add .
-	git commit -m "$MESSAGE"
-	git push
+    DEFAULT_MESSAGE="Auto commit"
+    if [ -z "$1" ]; then
+        MESSAGE="$DEFAULT_MESSAGE"
+    else
+        MESSAGE="$1"
+    fi
+    git add .
+    git commit -m "$MESSAGE"
+    git push
 }
 
 # ──────────────────────────── Late Loaders ────────────────────────────────────
