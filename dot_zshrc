@@ -134,6 +134,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     # Aliases
     alias open="xdg-open"
+    alias wget="wget --hsts-file ~/.cache/wget/wget-hsts"
     # alias wpeek="watch -n.1 /usr/local/bin/wpeek.sh"
 
     ## [Completion]
